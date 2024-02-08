@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:14.1-alpine
+    container_name: PostgresCont
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=warehouse
+      - POSTGRES_USER=warehouse
+      - POSTGRES_DB=warehouse
+  api:
+    build: .
+    container_name: api
+    ports:
+      - 8001:8001
+    environment:
+      - POSTGRES_HOST=db
