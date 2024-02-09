@@ -16,7 +16,7 @@ It provides two main endpoints:
 
 
 ### How to run:
-* run ```make run-server```.
+* run ```docker-compose build && docker-compose up```.
 
 
 ### How to run tests:
